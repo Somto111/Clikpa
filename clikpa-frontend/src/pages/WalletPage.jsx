@@ -166,7 +166,7 @@ export function WalletPage() {
               <StatusPill status="paid" customLabel="Self-custody active" />
             </div>
 
-            <div className="rounded-xl bg-surface p-3.5 border border-border-muted space-y-1.5 text-base">
+            <div className="rounded-xl border border-white/10 bg-black/25 p-3.5 space-y-1.5 text-base">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <span className="text-ink-muted">Connected business wallet</span>
                 <span className="font-mono font-semibold text-ink">
@@ -210,7 +210,7 @@ export function WalletPage() {
                       <div className="flex flex-wrap items-center gap-4 text-base">
                         <Link
                           to={`/invoices/${p.invoiceId}`}
-                          className="font-semibold text-brand underline underline-offset-2"
+                          className="font-semibold text-link underline underline-offset-2"
                         >
                           Open invoice
                         </Link>
@@ -220,14 +220,14 @@ export function WalletPage() {
                             setExpandedProofs((c) => ({ ...c, [p.id]: !c[p.id] }))
                           }
                           aria-expanded={openProof}
-                          className="min-h-11 font-semibold text-brand hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-sm"
+                          className="min-h-11 font-semibold text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 rounded-sm"
                         >
                           {openProof ? 'Hide proof of payment' : 'Proof of payment'}
                         </button>
                       </div>
 
                       {openProof && (
-                        <div className="rounded-lg border border-border-muted bg-surface p-3 space-y-1 text-base">
+                        <div className="rounded-lg border border-white/10 bg-black/25 p-3 space-y-1 text-base">
                           <p className="text-ink">
                             Customer sent {formatTokenAmount(p.totalToSendToken, p.token)} on{' '}
                             {p.chainName}.

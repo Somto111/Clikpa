@@ -39,9 +39,9 @@ export function DepositBlock({
       {/* Mandatory network/coin safety warning */}
       <div
         role="note"
-        className="flex items-start gap-3 rounded-xl border border-amber bg-amber-50 p-3.5 text-ink"
+        className="flex items-start gap-3 rounded-xl border border-amber/45 bg-amber-50 p-3.5 text-ink"
       >
-        <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-amber text-ink">
+        <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-amber text-on-amber">
           <Icon name="alert" className="h-4 w-4" />
         </span>
         <p className="text-base font-semibold leading-snug text-ink">
@@ -69,7 +69,7 @@ export function DepositBlock({
             <div className="rounded-xl border border-brand-200 bg-brand-50/60 p-4 space-y-3">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <span className="text-base font-medium text-ink-muted">Connected wallet</span>
-                <span className="rounded-lg bg-surface px-2.5 py-1 font-mono text-base font-semibold text-ink border border-border-muted">
+                <span className="rounded-lg border border-white/10 bg-black/25 px-2.5 py-1 font-mono text-base font-semibold text-ink">
                   {truncateMiddle(connectedWallet.address, 7, 6)}
                 </span>
               </div>
@@ -97,13 +97,13 @@ export function DepositBlock({
           <div className="space-y-2">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <span className="text-base font-medium text-ink">Deposit address</span>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1 text-base font-semibold text-brand border border-brand-200">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1 text-base font-semibold text-link border border-brand-200">
                 {payment.chainName}
                 {payment.chainBadge ? ` • ${payment.chainBadge}` : ''}
               </span>
             </div>
 
-            <div className="flex items-center justify-between gap-2 rounded-xl border border-border-strong bg-surface-muted p-3">
+            <div className="flex items-center justify-between gap-2 rounded-xl border border-white/12 bg-black/25 p-3">
               <div className="min-w-0">
                 <p
                   className="font-mono text-base font-semibold text-ink"
@@ -129,7 +129,7 @@ export function DepositBlock({
           {/* Exact amount copy */}
           <div className="space-y-2">
             <span className="block text-base font-medium text-ink">Exact amount to send</span>
-            <div className="flex items-center justify-between gap-2 rounded-xl border border-border-strong bg-surface-muted p-3">
+            <div className="flex items-center justify-between gap-2 rounded-xl border border-white/12 bg-black/25 p-3">
               <span className="font-mono text-lg font-bold text-ink">
                 {payment.totalToSendToken} {payment.token}
               </span>

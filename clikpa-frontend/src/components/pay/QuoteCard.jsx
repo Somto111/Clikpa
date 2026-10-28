@@ -59,7 +59,7 @@ export function QuoteCard({
   useProgressRingAnimation(progressCircleRef, ratio, RING_CIRCUMFERENCE)
 
   return (
-    <Card className="space-y-4 border-brand-200 bg-surface">
+    <Card className="space-y-4 rounded-3xl border-brand-200 bg-brand-50/40">
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-base font-medium text-ink-muted">Total to send</p>
@@ -100,7 +100,7 @@ export function QuoteCard({
                 strokeLinecap="round"
                 strokeDasharray={RING_CIRCUMFERENCE}
                 strokeDashoffset={0}
-                className={secondsLeft <= 60 ? 'text-status-failed-border' : 'text-brand'}
+                className={secondsLeft <= 60 ? 'text-status-failed-border' : 'text-link'}
               />
             </svg>
             <span className="font-mono text-base font-semibold text-ink">

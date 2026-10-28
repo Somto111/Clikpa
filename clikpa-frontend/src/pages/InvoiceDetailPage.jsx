@@ -105,7 +105,7 @@ export function InvoiceDetailPage() {
       <div>
         <Link
           to="/dashboard"
-          className="inline-flex min-h-11 items-center gap-1.5 text-base font-medium text-brand hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-lg"
+          className="inline-flex min-h-11 items-center gap-1.5 text-base font-medium text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 rounded-lg"
         >
           <Icon name="arrow-left" className="h-4 w-4" />
           <span>Back to invoices</span>
@@ -206,7 +206,7 @@ export function InvoiceDetailPage() {
                 Replaces cancelled invoice{' '}
                 <Link
                   to={`/invoices/${invoice.replacesInvoiceId}`}
-                  className="font-semibold text-brand underline"
+                  className="font-semibold text-link underline"
                 >
                   {invoice.replacesInvoiceId}
                 </Link>
@@ -377,7 +377,7 @@ export function InvoiceDetailPage() {
                         {p.status === 'delivered' && (
                           <Link
                             to={`/receipt/${invoice.id}?paymentId=${p.id}`}
-                            className="font-semibold text-brand underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-sm"
+                            className="font-semibold text-link underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 rounded-sm"
                           >
                             View receipt
                           </Link>
@@ -387,14 +387,14 @@ export function InvoiceDetailPage() {
                           type="button"
                           onClick={() => toggleProof(p.id)}
                           aria-expanded={proofOpen}
-                          className="min-h-11 font-semibold text-brand hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-sm"
+                          className="min-h-11 font-semibold text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 rounded-sm"
                         >
                           {proofOpen ? 'Hide proof of payment' : 'Proof of payment'}
                         </button>
                       </div>
 
                       {proofOpen && (
-                        <div className="rounded-lg border border-border-muted bg-surface p-3 space-y-1.5 text-base">
+                        <div className="rounded-lg border border-white/10 bg-black/25 p-3 space-y-1.5 text-base">
                           <div className="flex flex-wrap justify-between gap-2">
                             <span className="text-ink-muted">Network &amp; currency sent</span>
                             <span className="font-medium text-ink">

@@ -5,27 +5,27 @@ import { Button } from './Button'
 
 const BANNER_VARIANTS = {
   error: {
-    container: 'bg-status-failed-soft border-status-failed-border text-ink',
-    iconWrap: 'bg-status-failed-bg text-status-failed-text',
+    container: 'bg-status-failed-bg/70 border-status-failed-border/70 text-ink',
+    iconWrap: 'bg-status-failed-bg text-status-failed-text border border-status-failed-border/70',
     icon: 'alert',
     buttonVariant: 'secondary',
   },
   warning: {
-    // Amber rule: ink text on amber-50 fill, never amber text on white.
-    container: 'bg-amber-50 border-amber text-ink',
-    iconWrap: 'bg-amber text-ink',
+    // Amber rule: amber icon fill with dark ink glyph, never amber text on a light surface.
+    container: 'bg-amber-50 border-amber/45 text-ink',
+    iconWrap: 'bg-amber text-on-amber border border-amber-300/50',
     icon: 'alert',
     buttonVariant: 'secondary',
   },
   info: {
-    container: 'bg-brand-50 border-brand-200 text-ink',
-    iconWrap: 'bg-brand text-surface',
+    container: 'glass-brand text-ink',
+    iconWrap: 'bg-brand text-on-brand border border-brand-300/35',
     icon: 'shield',
     buttonVariant: 'primary',
   },
   success: {
-    container: 'bg-status-paid-soft border-status-paid-border text-ink',
-    iconWrap: 'bg-status-paid-bg text-status-paid-text',
+    container: 'bg-status-paid-bg/80 border-status-paid-border/60 text-ink',
+    iconWrap: 'bg-status-paid-bg text-status-paid-text border border-status-paid-border/60',
     icon: 'check-circle',
     buttonVariant: 'secondary',
   },
@@ -47,7 +47,11 @@ export function Banner({
   return (
     <div
       role={variant === 'error' || variant === 'warning' ? 'alert' : 'status'}
-      className={cn('rounded-2xl border p-4 sm:p-5 print:border-black print:bg-white print:text-black', cfg.container, className)}
+      className={cn(
+        'rounded-2xl border p-4 sm:p-5 backdrop-blur-md print:border-black print:bg-white print:text-black print:backdrop-blur-none',
+        cfg.container,
+        className,
+      )}
     >
       <div className="flex items-start gap-3.5">
         <div className={cn('mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl', cfg.iconWrap)}>
@@ -55,10 +59,10 @@ export function Banner({
         </div>
 
         <div className="min-w-0 flex-1 space-y-2">
-          {title && <h3 className="font-heading text-base font-semibold text-ink">{title}</h3>}
-          {children && <div className="text-base leading-relaxed text-ink">{children}</div>}
+          {title && <h3 className="font-heading text-base font-semibold text-ink print:text-black">{title}</h3>}
+          {children && <div className="text-base leading-relaxed text-ink print:text-black">{children}</div>}
           {reassurance && (
-            <p className="text-base font-medium text-ink-muted">{reassurance}</p>
+            <p className="text-base font-medium text-ink-muted print:text-black">{reassurance}</p>
           )}
           {actionLabel && (onAction || actionTo) && (
             <div className="pt-1 print:hidden">

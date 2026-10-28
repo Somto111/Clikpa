@@ -22,19 +22,19 @@ export function MockScenarioBar() {
   }
 
   return (
-    <div className="fixed bottom-20 right-3 z-40 md:bottom-4 md:right-4 print:hidden">
+    <div className="fixed bottom-24 right-3 z-40 md:bottom-4 md:right-4 print:hidden">
       {!open ? (
         <button
           type="button"
           onClick={() => setOpen(true)}
           aria-label="Open mock API state inspector"
-          className="min-h-11 rounded-full border border-border-strong bg-surface px-3.5 py-2 text-base font-medium text-ink shadow-md hover:bg-surface-subtle focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+          className="pill-header min-h-11 rounded-full px-3.5 py-2 text-base font-medium text-ink hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:border-brand-300"
         >
           Mock states
           {overrides.screenState !== 'normal' || overrides.payEdgeState !== 'none' ? ' • Active' : ''}
         </button>
       ) : (
-        <Card className="w-80 sm:w-96 max-h-[80vh] overflow-y-auto shadow-xl border-brand-200 space-y-4">
+        <Card variant="bare" className="glass-panel-strong w-80 sm:w-96 max-h-[80vh] overflow-y-auto space-y-4">
           <div className="flex items-center justify-between gap-2 border-b border-border-muted pb-2.5">
             <div>
               <p className="font-heading text-base font-semibold text-ink">Mock API Inspector</p>
@@ -53,7 +53,7 @@ export function MockScenarioBar() {
               id="mock-screen-state"
               value={overrides.screenState}
               onChange={(e) => update({ screenState: e.target.value })}
-              className="min-h-11 w-full rounded-xl border border-border-strong bg-surface px-3 text-base text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+              className="min-h-11 w-full rounded-xl border border-white/15 bg-white/[0.04] px-3 text-base text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:border-brand-300"
             >
               <option value="normal">Success (Realistic data)</option>
               <option value="loading">Loading (Slow 3G skeletons)</option>
@@ -70,7 +70,7 @@ export function MockScenarioBar() {
               id="mock-pay-edge"
               value={overrides.payEdgeState}
               onChange={(e) => update({ payEdgeState: e.target.value })}
-              className="min-h-11 w-full rounded-xl border border-border-strong bg-surface px-3 text-base text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+              className="min-h-11 w-full rounded-xl border border-white/15 bg-white/[0.04] px-3 text-base text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:border-brand-300"
             >
               <option value="none">Normal live flow</option>
               <option value="quote_ended">Quote ended (Get new payment details)</option>
@@ -91,7 +91,7 @@ export function MockScenarioBar() {
                 id="mock-kyc"
                 value={overrides.kycMode}
                 onChange={(e) => update({ kycMode: e.target.value })}
-                className="min-h-11 w-full rounded-xl border border-border-strong bg-surface px-2.5 text-base text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                className="min-h-11 w-full rounded-xl border border-white/15 bg-white/[0.04] px-2.5 text-base text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:border-brand-300"
               >
                 <option value="verified">Verified</option>
                 <option value="action_required">Needs ID</option>
@@ -107,7 +107,7 @@ export function MockScenarioBar() {
                 id="mock-wd"
                 value={overrides.withdrawalMode}
                 onChange={(e) => update({ withdrawalMode: e.target.value })}
-                className="min-h-11 w-full rounded-xl border border-border-strong bg-surface px-2.5 text-base text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                className="min-h-11 w-full rounded-xl border border-white/15 bg-white/[0.04] px-2.5 text-base text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:border-brand-300"
               >
                 <option value="normal">Succeeds</option>
                 <option value="fail_bank">Fails (unreturned)</option>
@@ -122,42 +122,42 @@ export function MockScenarioBar() {
               <Link
                 to="/pay/inv-101"
                 onClick={() => setOpen(false)}
-                className="min-h-11 inline-flex items-center rounded-lg bg-brand-50 px-3 text-base font-medium text-brand hover:bg-brand-100"
+                className="min-h-11 inline-flex items-center rounded-lg border border-white/10 bg-brand-50 px-3 text-base font-medium text-link hover:bg-brand-100"
               >
                 Pay (Unpaid)
               </Link>
               <Link
                 to="/pay/inv-102"
                 onClick={() => setOpen(false)}
-                className="min-h-11 inline-flex items-center rounded-lg bg-brand-50 px-3 text-base font-medium text-brand hover:bg-brand-100"
+                className="min-h-11 inline-flex items-center rounded-lg border border-white/10 bg-brand-50 px-3 text-base font-medium text-link hover:bg-brand-100"
               >
                 Pay (Instalment)
               </Link>
               <Link
                 to="/pay/inv-103"
                 onClick={() => setOpen(false)}
-                className="min-h-11 inline-flex items-center rounded-lg bg-brand-50 px-3 text-base font-medium text-brand hover:bg-brand-100"
+                className="min-h-11 inline-flex items-center rounded-lg border border-white/10 bg-brand-50 px-3 text-base font-medium text-link hover:bg-brand-100"
               >
                 Pay (Overdue)
               </Link>
               <Link
                 to="/pay/inv-104"
                 onClick={() => setOpen(false)}
-                className="min-h-11 inline-flex items-center rounded-lg bg-brand-50 px-3 text-base font-medium text-brand hover:bg-brand-100"
+                className="min-h-11 inline-flex items-center rounded-lg border border-white/10 bg-brand-50 px-3 text-base font-medium text-link hover:bg-brand-100"
               >
                 Pay (Paid)
               </Link>
               <Link
                 to="/pay/inv-105"
                 onClick={() => setOpen(false)}
-                className="min-h-11 inline-flex items-center rounded-lg bg-brand-50 px-3 text-base font-medium text-brand hover:bg-brand-100"
+                className="min-h-11 inline-flex items-center rounded-lg border border-white/10 bg-brand-50 px-3 text-base font-medium text-link hover:bg-brand-100"
               >
                 Pay (Cancelled)
               </Link>
               <Link
                 to="/receipt/inv-104"
                 onClick={() => setOpen(false)}
-                className="min-h-11 inline-flex items-center rounded-lg bg-brand-50 px-3 text-base font-medium text-brand hover:bg-brand-100"
+                className="min-h-11 inline-flex items-center rounded-lg border border-white/10 bg-brand-50 px-3 text-base font-medium text-link hover:bg-brand-100"
               >
                 Receipt
               </Link>

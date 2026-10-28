@@ -27,7 +27,7 @@ export function LiveStatusTracker({ payment, invoiceId, onCheckStatus, checking 
   useLiveDotPulse(pulseDotRef, isPulsing)
 
   return (
-    <div className="sticky bottom-3 z-20 rounded-2xl border border-border-strong bg-surface/95 p-4 shadow-lg backdrop-blur-xs">
+    <div className="glass-panel-strong sticky bottom-3 z-20 rounded-2xl p-4 print:hidden">
       <div className="space-y-3">
         {/* Stepper: Waiting for deposit -> Swapping -> Delivered */}
         <ol aria-label="Live payment progress" className="grid grid-cols-3 gap-2">
@@ -60,7 +60,7 @@ export function LiveStatusTracker({ payment, invoiceId, onCheckStatus, checking 
                       aria-hidden="true"
                       className={cn(
                         'h-0.5 flex-1 rounded-full',
-                        idx < activeIdx || isComplete ? 'bg-status-paid-border' : 'bg-border-muted',
+                        idx < activeIdx || isComplete ? 'bg-status-paid-border' : 'bg-white/15',
                       )}
                     />
                   )}

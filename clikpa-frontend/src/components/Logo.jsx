@@ -6,11 +6,11 @@ export function Logo({ to = '/', className }) {
     <Link
       to={to}
       className={cn(
-        'inline-flex items-center gap-2.5 rounded-xl py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2',
+        'inline-flex items-center gap-2.5 rounded-full py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-muted',
         className,
       )}
     >
-      <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand text-surface shadow-xs print:border print:border-black print:bg-white print:text-black">
+      <span className="relative flex h-9 w-9 items-center justify-center rounded-xl border border-brand-300/35 bg-brand text-on-brand shadow-[0_10px_24px_-14px_rgba(0,64,168,1),inset_0_1px_0_rgba(255,255,255,0.18)] print:border print:border-black print:bg-white print:text-black print:shadow-none">
         <svg viewBox="0 0 32 32" className="h-5 w-5" fill="none" aria-hidden="true">
           <path
             d="M20.5 10.5C19.1 9 17.1 8.2 14.9 8.2C10.5 8.2 7 11.7 7 16C7 20.3 10.5 23.8 14.9 23.8C17.1 23.8 19.1 23 20.5 21.5"

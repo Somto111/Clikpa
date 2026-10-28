@@ -2,22 +2,24 @@ import { forwardRef } from 'react'
 import { cn } from '../../utils/cn'
 
 const BUTTON_VARIANTS = {
+  // #0040A8 fill, white label (9.1:1). Subtle inner light keeps the edge crisp on midnight.
   primary:
-    'bg-brand text-surface hover:bg-brand-700 active:bg-brand-800 border border-transparent shadow-xs',
+    'bg-brand text-on-brand border border-brand-300/30 shadow-[0_14px_34px_-18px_rgba(0,64,168,0.95)] hover:bg-brand-500 hover:border-brand-300/45 active:bg-brand-700',
+  // Outlined secondary — 1px translucent hairline on glass
   secondary:
-    'bg-surface text-ink hover:bg-surface-subtle active:bg-border-muted border border-border-strong',
-  // Amber rule: amber fill always uses dark ink text, never amber text on white.
+    'bg-white/[0.045] text-ink border border-white/20 backdrop-blur-md hover:bg-white/[0.09] hover:border-white/35 active:bg-white/[0.12]',
+  // Amber rule: amber fill always uses dark ink text, never amber text on a light surface.
   amber:
-    'bg-amber text-ink hover:bg-amber-400 active:bg-amber-600 border border-amber-600/30 font-semibold',
+    'bg-amber text-on-amber border border-amber-300/50 font-semibold shadow-[0_14px_34px_-18px_rgba(255,168,0,0.85)] hover:bg-amber-400 hover:border-amber-200 active:bg-amber-600',
   ghost:
-    'bg-transparent text-brand hover:bg-brand-50 active:bg-brand-100 border border-transparent',
+    'bg-transparent text-link border border-transparent hover:bg-white/[0.07] hover:text-brand-200 active:bg-white/[0.1]',
   danger:
-    'bg-status-failed-bg text-status-failed-text hover:bg-status-overdue-soft border border-status-failed-border',
+    'bg-status-failed-bg text-status-failed-text border border-status-failed-border/80 hover:bg-[#3A1418] active:bg-[#431619]',
 }
 
 const BUTTON_SIZES = {
   md: 'min-h-11 px-4 py-2.5 text-base',
-  lg: 'min-h-12 px-5 py-3 text-base font-semibold',
+  lg: 'min-h-12 px-6 py-3 text-base font-semibold',
   icon: 'min-h-11 min-w-11 p-2.5 text-base',
 }
 
@@ -46,8 +48,9 @@ export const Button = forwardRef(function Button(
       aria-disabled={Component !== 'button' && isDisabled ? true : undefined}
       className={cn(
         'inline-flex items-center justify-center gap-2 rounded-xl font-medium leading-snug select-none',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2',
-        'disabled:cursor-not-allowed disabled:opacity-55',
+        'transition-[background-color,border-color,box-shadow,transform] duration-200 motion-reduce:transition-none',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-muted',
+        'disabled:cursor-not-allowed disabled:opacity-50 print:shadow-none',
         BUTTON_VARIANTS[variant] || BUTTON_VARIANTS.primary,
         BUTTON_SIZES[size] || BUTTON_SIZES.md,
         fullWidth && 'w-full',

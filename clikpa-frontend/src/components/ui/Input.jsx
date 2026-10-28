@@ -2,11 +2,12 @@ import { forwardRef, useId } from 'react'
 import { cn } from '../../utils/cn'
 
 const FIELD_BASE =
-  'w-full min-h-11 rounded-xl border bg-surface px-3.5 py-2.5 text-base text-ink placeholder:text-ink-muted/75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:bg-surface-subtle disabled:text-ink-muted'
+  'w-full min-h-11 rounded-xl border bg-white/[0.04] px-3.5 py-2.5 text-base text-ink placeholder:text-ink-muted/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300/70 focus-visible:ring-offset-1 focus-visible:ring-offset-surface-muted focus-visible:border-brand-300 disabled:cursor-not-allowed disabled:bg-white/[0.02] disabled:text-ink-muted'
 
 const FIELD_VARIANTS = {
-  default: 'border-border-strong hover:border-ink-muted',
-  error: 'border-status-failed-border bg-status-failed-soft/40 focus-visible:ring-status-failed-border',
+  default: 'border-white/15 hover:border-white/28',
+  error:
+    'border-status-failed-border bg-status-failed-bg/45 focus-visible:ring-status-failed-border focus-visible:border-status-failed-border',
 }
 
 export const Input = forwardRef(function Input(
