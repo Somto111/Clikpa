@@ -4,6 +4,7 @@ import { IS_MOCK_ENABLED, api } from '../api/client'
 import { getMockOverrides } from '../api/mock'
 import { useAuth } from '../context/AuthContext'
 import { Logo } from '../components/Logo'
+import { PillHeader } from '../components/PillHeader'
 import { Icon } from '../components/Icons'
 import {
   Banner,
@@ -148,23 +149,21 @@ export function SignIn() {
   }
 
   return (
-    <div ref={pageRef} className="min-h-screen bg-surface-muted flex flex-col">
-      <header className="border-b border-border-muted bg-surface">
-        <div className="mx-auto flex max-w-md items-center justify-between gap-3 px-4 py-3.5">
-          <Logo to="/" />
-          {IS_MOCK_ENABLED && (
-            <button
-              type="button"
-              onClick={() =>
-                setSearchParams({ mode: authMode === 'code' ? 'password' : 'code' })
-              }
-              className="min-h-11 rounded-xl px-3 text-base font-medium text-brand hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
-            >
-              Switch to {authMode === 'code' ? 'password' : 'email code'}
-            </button>
-          )}
-        </div>
-      </header>
+    <div ref={pageRef} className="flex min-h-screen flex-col">
+      <PillHeader width="max-w-md">
+        <Logo to="/" />
+        {IS_MOCK_ENABLED && (
+          <button
+            type="button"
+            onClick={() =>
+              setSearchParams({ mode: authMode === 'code' ? 'password' : 'code' })
+            }
+            className="min-h-11 rounded-full px-3 text-base font-medium text-link hover:bg-white/[0.07] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:border-brand-300"
+          >
+            Switch to {authMode === 'code' ? 'password' : 'email code'}
+          </button>
+        )}
+      </PillHeader>
 
       <main className="mx-auto w-full max-w-md flex-1 space-y-5 px-4 py-8 sm:py-12">
         {/* 1. LOADING */}
@@ -196,8 +195,11 @@ export function SignIn() {
               </Banner>
             )}
 
-            <Card data-animate="section" padding="lg" className="space-y-5">
-              <div className="space-y-1">
+            <Card data-animate="section" padding="lg" className="edge-light space-y-5 rounded-3xl">
+              <div className="space-y-2">
+                <p className="font-mono text-xs uppercase tracking-[0.22em] text-brand-300">
+                  Merchant access
+                </p>
                 <h1 className="font-heading text-2xl font-bold text-ink">
                   Sign in to ClikPa
                 </h1>
@@ -226,9 +228,9 @@ export function SignIn() {
                   </form>
                 ) : (
                   <form onSubmit={handleVerifyCode} className="space-y-4">
-                    <div className="rounded-xl bg-surface-muted p-3 text-base text-ink-muted">
+                    <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3 text-base text-ink-muted">
                       Enter the 6-digit code sent to <strong className="text-ink">{email}</strong>.
-                      {demoHint && <p className="mt-1 font-medium text-brand">{demoHint}</p>}
+                      {demoHint && <p className="mt-1 font-medium text-link">{demoHint}</p>}
                     </div>
 
                     <Input
@@ -292,7 +294,7 @@ export function SignIn() {
                   type="button"
                   onClick={() => setShowHelp((v) => !v)}
                   aria-expanded={showHelp}
-                  className="inline-flex min-h-11 items-center text-base font-semibold text-brand hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-lg"
+                  className="inline-flex min-h-11 items-center rounded-lg text-base font-semibold text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:border-brand-300"
                 >
                   {authMode === 'code' ? 'Trouble signing in?' : 'Forgot password?'}
                 </button>

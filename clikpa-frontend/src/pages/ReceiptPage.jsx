@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
 import { api } from '../api/client'
 import { Logo } from '../components/Logo'
+import { PillHeader } from '../components/PillHeader'
 import { Icon } from '../components/Icons'
 import {
   Banner,
@@ -74,21 +75,19 @@ export function ReceiptPage() {
   }
 
   return (
-    <div ref={pageRef} className="min-h-screen bg-surface-muted print:bg-white print:text-black">
-      <header className="border-b border-border-muted bg-surface print:hidden">
-        <div className="mx-auto flex max-w-2xl items-center justify-between gap-3 px-4 py-3.5">
-          <Logo to="/" />
-          {invoice && (
-            <Link
-              to={`/pay/${invoice.id}`}
-              className="inline-flex min-h-11 items-center gap-1.5 rounded-xl px-3 text-base font-medium text-brand hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
-            >
-              <Icon name="arrow-left" className="h-4 w-4" />
-              <span>Invoice page</span>
-            </Link>
-          )}
-        </div>
-      </header>
+    <div ref={pageRef} className="min-h-screen print:bg-white print:text-black">
+      <PillHeader width="max-w-2xl">
+        <Logo to="/" />
+        {invoice && (
+          <Link
+            to={`/pay/${invoice.id}`}
+            className="inline-flex min-h-11 items-center gap-1.5 rounded-full px-3.5 text-base font-medium text-link hover:bg-white/[0.07] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:border-brand-300"
+          >
+            <Icon name="arrow-left" className="h-4 w-4" />
+            <span>Invoice page</span>
+          </Link>
+        )}
+      </PillHeader>
 
       <main className="mx-auto max-w-2xl space-y-5 px-4 py-6 sm:py-8 print:max-w-none print:p-0">
         {/* 1. LOADING */}
@@ -271,7 +270,7 @@ export function ReceiptPage() {
                   type="button"
                   onClick={() => setShowProof((v) => !v)}
                   aria-expanded={showProof}
-                  className="inline-flex min-h-11 items-center gap-2 rounded-xl px-2 text-base font-semibold text-brand hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand print:hidden"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-xl px-2 text-base font-semibold text-link hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 print:hidden"
                 >
                   <span>{showProof ? 'Hide proof of payment' : 'Proof of payment'}</span>
                   <Icon

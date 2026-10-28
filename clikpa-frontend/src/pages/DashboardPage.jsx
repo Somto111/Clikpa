@@ -169,10 +169,10 @@ export function DashboardPage() {
                   onClick={() => setFilter(f.id)}
                   className={cn(
                     'min-h-11 rounded-xl border px-4 py-2 text-base font-medium',
-                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand',
+                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300',
                     active
-                      ? 'border-brand bg-brand text-surface font-semibold'
-                      : 'border-border-strong bg-surface text-ink hover:bg-surface-subtle',
+                      ? 'border-brand-300 bg-brand text-on-brand font-semibold'
+                      : 'border-white/15 bg-white/[0.04] text-ink hover:bg-white/[0.08] hover:border-white/25',
                   )}
                 >
                   {f.label}
@@ -196,7 +196,7 @@ export function DashboardPage() {
                 <Link
                   key={inv.id}
                   to={`/invoices/${inv.id}`}
-                  className="block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                  className="block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-muted"
                 >
                   <Card className="hover:border-brand-300 space-y-3">
                     {/* Consistent top-right StatusPill on every invoice card */}
@@ -226,7 +226,7 @@ export function DashboardPage() {
                         )}
                       </div>
 
-                      <span className="inline-flex items-center gap-1 text-base font-semibold text-brand">
+                      <span className="inline-flex items-center gap-1 text-base font-semibold text-link">
                         <span>Open details</span>
                         <Icon name="arrow-right" className="h-4 w-4" />
                       </span>

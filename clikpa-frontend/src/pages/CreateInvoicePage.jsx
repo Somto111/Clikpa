@@ -216,7 +216,7 @@ export function CreateInvoicePage() {
         <div>
           <Link
             to="/dashboard"
-            className="inline-flex min-h-11 items-center gap-1.5 text-base font-medium text-brand hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-lg"
+            className="inline-flex min-h-11 items-center gap-1.5 text-base font-medium text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 rounded-lg"
           >
             <Icon name="arrow-left" className="h-4 w-4" />
             <span>Back to invoices</span>
@@ -404,14 +404,14 @@ export function CreateInvoicePage() {
                 Discount (optional)
               </label>
 
-              <div className="inline-flex rounded-xl border border-border-strong bg-surface-muted p-1">
+              <div className="inline-flex rounded-xl border border-white/12 bg-white/[0.03] p-1">
                 <button
                   type="button"
                   onClick={() => setDiscountType('amount')}
                   aria-pressed={discountType === 'amount'}
                   className={cn(
-                    'min-h-11 rounded-lg px-3.5 text-base font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand',
-                    discountType === 'amount' ? 'bg-brand text-surface' : 'text-ink',
+                    'min-h-11 rounded-lg px-3.5 text-base font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300',
+                    discountType === 'amount' ? 'bg-brand text-on-brand' : 'text-ink',
                   )}
                 >
                   $ Amount
@@ -421,8 +421,8 @@ export function CreateInvoicePage() {
                   onClick={() => setDiscountType('percent')}
                   aria-pressed={discountType === 'percent'}
                   className={cn(
-                    'min-h-11 rounded-lg px-3.5 text-base font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand',
-                    discountType === 'percent' ? 'bg-brand text-surface' : 'text-ink',
+                    'min-h-11 rounded-lg px-3.5 text-base font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300',
+                    discountType === 'percent' ? 'bg-brand text-on-brand' : 'text-ink',
                   )}
                 >
                   % Percent
@@ -482,10 +482,10 @@ export function CreateInvoicePage() {
                 aria-pressed={!allowInstalments}
                 className={cn(
                   'flex min-h-12 flex-col items-start justify-center rounded-xl border p-3.5 text-left',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300',
                   !allowInstalments
-                    ? 'border-brand bg-brand-50 ring-1 ring-brand'
-                    : 'border-border-strong bg-surface',
+                    ? 'border-brand-300 bg-brand-50 ring-1 ring-brand-300'
+                    : 'border-white/15 bg-white/[0.04]',
                 )}
               >
                 <span className="text-base font-semibold text-ink">Full payment only</span>
@@ -498,10 +498,10 @@ export function CreateInvoicePage() {
                 aria-pressed={allowInstalments}
                 className={cn(
                   'flex min-h-12 flex-col items-start justify-center rounded-xl border p-3.5 text-left',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300',
                   allowInstalments
-                    ? 'border-brand bg-brand-50 ring-1 ring-brand'
-                    : 'border-border-strong bg-surface',
+                    ? 'border-brand-300 bg-brand-50 ring-1 ring-brand-300'
+                    : 'border-white/15 bg-white/[0.04]',
                 )}
               >
                 <span className="text-base font-semibold text-ink">Allow instalments</span>

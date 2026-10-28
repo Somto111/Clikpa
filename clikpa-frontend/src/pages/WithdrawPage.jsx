@@ -206,7 +206,7 @@ export function WithdrawPage() {
         <div>
           <Link
             to="/wallet"
-            className="inline-flex min-h-11 items-center gap-1.5 text-base font-medium text-brand hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-lg"
+            className="inline-flex min-h-11 items-center gap-1.5 text-base font-medium text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 rounded-lg"
           >
             <Icon name="arrow-left" className="h-4 w-4" />
             <span>Back to wallet</span>
@@ -446,7 +446,7 @@ export function WithdrawPage() {
                       <button
                         type="button"
                         onClick={() => setShowLinkBank((v) => !v)}
-                        className="min-h-11 text-base font-semibold text-brand hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-lg px-2"
+                        className="min-h-11 text-base font-semibold text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 rounded-lg px-2"
                       >
                         {showLinkBank ? 'Close' : '+ Link another bank'}
                       </button>
@@ -460,7 +460,7 @@ export function WithdrawPage() {
                           setSelectedBankId(e.target.value)
                           setQuote(null)
                         }}
-                        className="min-h-11 w-full rounded-xl border border-border-strong bg-surface px-3.5 py-2.5 text-base text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                        className="min-h-11 w-full rounded-xl border border-white/15 bg-white/[0.04] px-3.5 py-2.5 text-base text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:border-brand-300"
                       >
                         {options.linkedBanks.map((b) => (
                           <option key={b.id} value={b.id}>
@@ -501,7 +501,7 @@ export function WithdrawPage() {
                         <span>{formatUsd(displayedSummary.totalLeavingWalletUsd)}</span>
                       </div>
 
-                      <div className="flex justify-between gap-2 border-t border-brand-200 pt-2 text-lg font-bold text-brand-900">
+                      <div className="flex justify-between gap-2 border-t border-brand-200 pt-2 text-lg font-bold text-ink">
                         <span>Naira expected</span>
                         <span>{formatNgn(displayedSummary.expectedNgn)}</span>
                       </div>
@@ -572,7 +572,7 @@ export function WithdrawPage() {
                         id="new-bank-select"
                         value={newBankName}
                         onChange={(e) => setNewBankName(e.target.value)}
-                        className="min-h-11 w-full rounded-xl border border-border-strong bg-surface px-3.5 text-base text-ink"
+                        className="min-h-11 w-full rounded-xl border border-white/15 bg-white/[0.04] px-3.5 text-base text-ink"
                       >
                         {options.supportedBanks?.map((bn) => (
                           <option key={bn} value={bn}>

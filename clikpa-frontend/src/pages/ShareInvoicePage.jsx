@@ -132,7 +132,7 @@ export function ShareInvoicePage() {
       <div>
         <Link
           to={invoice ? `/invoices/${invoice.id}` : '/dashboard'}
-          className="inline-flex min-h-11 items-center gap-1.5 text-base font-medium text-brand hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-lg"
+          className="inline-flex min-h-11 items-center gap-1.5 text-base font-medium text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 rounded-lg"
         >
           <Icon name="arrow-left" className="h-4 w-4" />
           <span>Back to invoice</span>
@@ -263,7 +263,7 @@ export function ShareInvoicePage() {
                 </span>
                 <Link
                   to={`/pay/${invoice.id}`}
-                  className="shrink-0 inline-flex min-h-11 items-center gap-1 text-base font-semibold text-brand hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-lg px-2"
+                  className="shrink-0 inline-flex min-h-11 items-center gap-1 text-base font-semibold text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 rounded-lg px-2"
                 >
                   <span>Preview pay page</span>
                   <Icon name="external" className="h-4 w-4" />

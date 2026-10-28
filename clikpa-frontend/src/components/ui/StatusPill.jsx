@@ -5,107 +5,108 @@ const STATUS_MAP = {
   draft: {
     label: 'Draft',
     icon: 'doc',
-    classes: 'bg-status-draft-bg text-status-draft-text border border-status-draft-border',
+    classes: 'bg-white/[0.06] text-status-draft-text border border-white/15',
   },
   unpaid: {
     label: 'Unpaid',
     icon: 'clock',
-    classes: 'bg-status-unpaid-bg text-status-unpaid-text border border-status-unpaid-border',
+    classes: 'bg-status-unpaid-bg/80 text-status-unpaid-text border border-status-unpaid-border',
   },
   pending: {
     label: 'Payment underway',
     icon: 'clock',
-    classes: 'bg-status-pending-bg text-status-pending-text border border-status-pending-border',
+    // Amber rule: amber fill always carries dark ink text.
+    classes: 'bg-amber text-on-amber border border-amber-300/50',
   },
   partial: {
     label: 'Partially paid',
     icon: 'half-circle',
-    classes: 'bg-status-partial-bg text-status-partial-text border-2 border-status-partial-border',
+    classes: 'bg-status-partial-bg text-status-partial-text border border-status-partial-border/70',
   },
   paid: {
     label: 'Paid',
     icon: 'check-circle',
-    classes: 'bg-status-paid-bg text-status-paid-text border border-status-paid-border',
+    classes: 'bg-status-paid-bg text-status-paid-text border border-status-paid-border/70',
   },
   // Rule 3: Passing due date makes an invoice "Overdue", never "Expired".
   overdue: {
     label: 'Overdue',
     icon: 'alert',
-    classes: 'bg-status-overdue-bg text-status-overdue-text border-2 border-status-overdue-border',
+    classes: 'bg-status-overdue-bg text-status-overdue-text border border-status-overdue-border/80',
   },
   cancelled: {
     label: 'Cancelled',
     icon: 'x-circle',
-    classes: 'bg-status-cancelled-bg text-status-cancelled-text border border-status-cancelled-border',
+    classes: 'bg-status-cancelled-bg text-status-cancelled-text border border-white/15',
   },
   failed: {
     label: 'Failed',
     icon: 'alert',
-    classes: 'bg-status-failed-bg text-status-failed-text border border-status-failed-border',
+    classes: 'bg-status-failed-bg text-status-failed-text border border-status-failed-border/80',
   },
 
   // Pay page granular statuses
   waiting_deposit: {
     label: 'Waiting for deposit',
     icon: 'clock',
-    classes: 'bg-status-unpaid-bg text-status-unpaid-text border border-status-unpaid-border',
+    classes: 'bg-status-unpaid-bg/80 text-status-unpaid-text border border-status-unpaid-border',
   },
   swapping: {
     label: 'Swapping',
     icon: 'refresh',
-    classes: 'bg-status-pending-bg text-status-pending-text border border-status-pending-border',
+    classes: 'bg-amber text-on-amber border border-amber-300/50',
   },
   delivered: {
     label: 'Delivered',
     icon: 'check-circle',
-    classes: 'bg-status-paid-bg text-status-paid-text border border-status-paid-border',
+    classes: 'bg-status-paid-bg text-status-paid-text border border-status-paid-border/70',
   },
   underpaid: {
     label: 'Short payment',
     icon: 'alert',
-    classes: 'bg-status-partial-bg text-status-partial-text border-2 border-status-partial-border',
+    classes: 'bg-status-partial-bg text-status-partial-text border border-status-partial-border/70',
   },
   overpaid: {
     label: 'Overpaid',
     icon: 'alert',
-    classes: 'bg-status-pending-soft text-ink border-2 border-status-pending-border',
+    classes: 'bg-status-pending-soft text-amber border border-status-pending-border/60',
   },
   swap_failed: {
     label: 'Returning funds',
     icon: 'alert',
-    classes: 'bg-status-failed-bg text-status-failed-text border border-status-failed-border',
+    classes: 'bg-status-failed-bg text-status-failed-text border border-status-failed-border/80',
   },
   quote_ended: {
     label: 'New quote needed',
     icon: 'refresh',
-    classes: 'bg-status-unpaid-bg text-status-unpaid-text border border-status-unpaid-border',
+    classes: 'bg-status-unpaid-bg/80 text-status-unpaid-text border border-status-unpaid-border',
   },
 
   // Rule 9: Exact API-reported withdrawal statuses
   'Awaiting approval': {
     label: 'Awaiting approval',
     icon: 'clock',
-    classes: 'bg-status-partial-bg text-status-partial-text border-2 border-status-partial-border',
+    classes: 'bg-status-partial-bg text-status-partial-text border border-status-partial-border/70',
   },
   'Sending payment': {
     label: 'Sending payment',
     icon: 'refresh',
-    classes: 'bg-status-pending-bg text-status-pending-text border border-status-pending-border',
+    classes: 'bg-amber text-on-amber border border-amber-300/50',
   },
   'Bank payout processing': {
     label: 'Bank payout processing',
     icon: 'bank',
-    classes: 'bg-status-pending-bg text-status-pending-text border border-status-pending-border',
+    classes: 'bg-amber text-on-amber border border-amber-300/50',
   },
   'Paid to your bank': {
     label: 'Paid to your bank',
     icon: 'check-circle',
-    classes: 'bg-status-paid-bg text-status-paid-text border border-status-paid-border',
+    classes: 'bg-status-paid-bg text-status-paid-text border border-status-paid-border/70',
   },
   Failed: {
     label: 'Failed',
     icon: 'alert',
-    classes: 'bg-status-failed-bg text-status-failed-text border border-status-failed-border',
+    classes: 'bg-status-failed-bg text-status-failed-text border border-status-failed-border/80',
   },
 }
 
@@ -116,7 +117,7 @@ export function StatusPill({ status, customLabel, className }) {
     <span
       className={cn(
         'inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-base font-semibold leading-tight whitespace-nowrap',
-        'print:border-black print:bg-white print:text-black',
+        'print:border print:border-black print:bg-white print:text-black print:shadow-none',
         config.classes,
         className,
       )}

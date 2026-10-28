@@ -15,7 +15,7 @@ export function QrCodeBox({ value, label = 'Deposit address QR code' }) {
     <div className="flex flex-col items-center gap-3">
       <div
         className={cn(
-          'rounded-2xl border border-border-muted bg-surface p-3 shadow-xs',
+          'rounded-2xl border border-white/15 bg-white p-3 shadow-[0_28px_60px_-40px_rgba(0,64,168,0.9)]',
           enlarged ? 'w-64 sm:w-72' : 'w-44 sm:w-48',
         )}
       >

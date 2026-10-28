@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { api } from '../api/client'
 import { SUPPORTED_NETWORKS } from '../api/mock'
 import { Logo } from '../components/Logo'
+import { PillHeader } from '../components/PillHeader'
 import { Icon } from '../components/Icons'
 import {
   Banner,
@@ -449,17 +450,15 @@ export function PayPage() {
   }
 
   return (
-    <div ref={pageRef} className="min-h-screen bg-surface-muted flex flex-col">
-      {/* Compact Header */}
-      <header className="border-b border-border-muted bg-surface">
-        <div className="mx-auto flex max-w-xl items-center justify-between gap-3 px-4 py-3.5">
-          <Logo to="/" />
-          <span className="inline-flex items-center gap-1.5 text-base font-medium text-ink-muted">
-            <Icon name="shield" className="h-4 w-4 text-brand" />
-            <span>Secure pay link</span>
-          </span>
-        </div>
-      </header>
+    <div ref={pageRef} className="flex min-h-screen flex-col">
+      {/* Floating pill header */}
+      <PillHeader width="max-w-xl">
+        <Logo to="/" />
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-base font-medium text-ink-muted">
+          <Icon name="shield" className="h-4 w-4 text-brand-300" />
+          <span>Secure pay link</span>
+        </span>
+      </PillHeader>
 
       <main className="mx-auto w-full max-w-xl flex-1 space-y-4 px-4 py-5 sm:py-7">
         {/* 1. LOADING STATE */}
@@ -500,7 +499,7 @@ export function PayPage() {
                     <h1 className="font-heading text-lg sm:text-xl font-bold text-ink truncate">
                       {invoice.merchant?.businessName || 'Verified Merchant'}
                     </h1>
-                    <Icon name="verified" className="h-5 w-5 text-brand" />
+                    <Icon name="verified" className="h-5 w-5 text-link" />
                   </div>
                   <p className="mt-0.5 text-base text-ink-muted">
                     Verified ID:{' '}
@@ -557,7 +556,7 @@ export function PayPage() {
                         </span>
                         <Link
                           to={`/receipt/${invoice.id}?paymentId=${cp.id}`}
-                          className="font-semibold text-brand underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-sm"
+                          className="font-semibold text-link underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 rounded-sm"
                         >
                           Receipt
                         </Link>
@@ -714,11 +713,11 @@ export function PayPage() {
                             aria-pressed={selected}
                             className={cn(
                               'flex min-h-12 flex-col items-start justify-center rounded-xl border px-3 py-2 text-left',
-                              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-1',
+                              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-1 focus-visible:ring-offset-surface-muted',
                               'disabled:cursor-not-allowed disabled:opacity-60',
                               selected
-                                ? 'border-brand bg-brand-50 text-brand-900 ring-1 ring-brand'
-                                : 'border-border-strong bg-surface text-ink hover:bg-surface-subtle',
+                                ? 'border-brand-300 bg-brand-50 text-ink ring-1 ring-brand-300'
+                                : 'border-white/15 bg-white/[0.04] text-ink hover:bg-white/[0.08] hover:border-white/25',
                             )}
                           >
                             <span className="text-base font-semibold leading-tight">{net.name}</span>
@@ -748,18 +747,18 @@ export function PayPage() {
                             aria-pressed={selected}
                             className={cn(
                               'inline-flex min-h-11 items-center gap-2 rounded-xl border px-4 py-2 text-base font-semibold',
-                              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-1',
+                              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-1 focus-visible:ring-offset-surface-muted',
                               'disabled:cursor-not-allowed disabled:opacity-60',
                               selected
-                                ? 'border-brand bg-brand text-surface'
-                                : 'border-border-strong bg-surface text-ink hover:bg-surface-subtle',
+                                ? 'border-brand-300 bg-brand text-on-brand'
+                                : 'border-white/15 bg-white/[0.04] text-ink hover:bg-white/[0.08] hover:border-white/25',
                             )}
                           >
                             <span>{tok.symbol}</span>
                             <span
                               className={cn(
                                 'text-xs font-normal',
-                                selected ? 'text-brand-100' : 'text-ink-muted',
+                                selected ? 'text-on-brand/80' : 'text-ink-muted',
                               )}
                             >
                               {tok.name}
@@ -802,13 +801,13 @@ export function PayPage() {
                         aria-pressed={method === 'qr'}
                         className={cn(
                           'flex min-h-12 items-center gap-3 rounded-xl border px-3.5 py-3 text-left',
-                          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand',
+                          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300',
                           method === 'qr'
-                            ? 'border-brand bg-brand-50 text-ink ring-1 ring-brand'
-                            : 'border-border-strong bg-surface text-ink hover:bg-surface-subtle',
+                            ? 'border-brand-300 bg-brand-50 text-ink ring-1 ring-brand-300'
+                            : 'border-white/15 bg-white/[0.04] text-ink hover:bg-white/[0.08] hover:border-white/25',
                         )}
                       >
-                        <Icon name="qr" className="h-5 w-5 text-brand" />
+                        <Icon name="qr" className="h-5 w-5 text-link" />
                         <span className="text-base font-semibold">
                           Pay using an address or QR code
                         </span>
@@ -820,13 +819,13 @@ export function PayPage() {
                         aria-pressed={method === 'wallet'}
                         className={cn(
                           'flex min-h-12 items-center gap-3 rounded-xl border px-3.5 py-3 text-left',
-                          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand',
+                          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300',
                           method === 'wallet'
-                            ? 'border-brand bg-brand-50 text-ink ring-1 ring-brand'
-                            : 'border-border-strong bg-surface text-ink hover:bg-surface-subtle',
+                            ? 'border-brand-300 bg-brand-50 text-ink ring-1 ring-brand-300'
+                            : 'border-white/15 bg-white/[0.04] text-ink hover:bg-white/[0.08] hover:border-white/25',
                         )}
                       >
-                        <Icon name="wallet" className="h-5 w-5 text-brand" />
+                        <Icon name="wallet" className="h-5 w-5 text-link" />
                         <span className="text-base font-semibold">Pay with your wallet</span>
                       </button>
                     </div>
@@ -954,7 +953,7 @@ export function PayPage() {
             {/* SECTION 10: Collapsed Line Items */}
             <Card data-animate="section" padding="none">
               <details className="group">
-                <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 py-3.5 text-base font-semibold text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-2xl">
+                <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 py-3.5 text-base font-semibold text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 rounded-2xl">
                   <span>
                     Invoice items ({invoice.items?.length || 0}) • {formatUsd(invoice.total)}
                   </span>
@@ -1020,7 +1019,7 @@ export function PayPage() {
             {/* SECTION 11: Trust Footer (Rule 1: Non-custodial) */}
             <footer className="py-4 text-center space-y-1">
               <p className="inline-flex items-center justify-center gap-1.5 text-base font-semibold text-ink">
-                <Icon name="shield" className="h-5 w-5 text-brand" />
+                <Icon name="shield" className="h-5 w-5 text-link" />
                 <span>We&apos;ll never ask for your secret words.</span>
               </p>
               <p className="text-base text-ink-muted">
